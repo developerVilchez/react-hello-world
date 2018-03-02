@@ -1,0 +1,40 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello React</title>
+    <!--Enlazar la libreria de reac-->
+   <!--  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script> -->
+    <script src="vendors/react.js"></script>
+    <!--Enlazar el dom virtual --> 
+   <!--  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>  -->
+    <script src="vendors/react-dom.js"></script>
+    <!-- Enlazar el dom- factorie que me permite crear elementos en la pagina -->
+   <!--  <script crossorigin src="https://unpkg.com/react-dom-factories@1.0.0/index.js"></script>   -->
+    <script src="vendors/react-factorie.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript">
+    /* Cada componente de react necesita una clase, cada componente que se
+    cree se extenderá de un componente*/
+    class Pet extends React.Component {
+     /*Todos los componente tienen el metodo render y en su interior tendrá
+     todo el html que queremos que se vea en el navegador*/
+     render(){
+      const h2 = ReactDOMFactories.h2(null,'Donas');
+      const img = ReactDOMFactories.img({
+          src: "http://www.rodentia.es/blog/wp-content/uploads/2016/02/Qu%C3%A9-Comen-los-Gatos.jpg",
+          alt: "Gatito Donas"
+      });
+      //Decimos que los dos elementos van a ir dentro de un div
+      return ReactDOMFactories.div(null, h2, img);
+      }
+    }
+   //Ahora utilizamos el DOM para crear el elemento Pet(componente) estará dentro de app 
+  ReactDOM.render(React.createElement(Pet), document.getElementById('app'));
+    </script>
+</body>
+</html>

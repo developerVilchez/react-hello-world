@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="app.css">
+     <!--Enlazar la libreria de reac-->
+     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+     <!--Enlazar el dom virtual --> 
+     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+     <!--Babel para jsx-->
+     <script crossorigin src = "https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <title>Componentes</title>
+    
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+         /* Cada componente de react necesita una clase, cada componente que se
+    cree se extenderá de un componente*/
+    class Pet extends React.Component {
+     render(){
+        
+         //Definir estilos desde js
+         const liStyle = {fontSize: '1.5em'};
+         const hobbies =['comer','dormir','maullar','aruñar','comer atun','laslalsl'];
+
+        // hacemos el return del div car.
+        /*Recuerda que siempre que usamos {} es para ejecutar codigo js */
+        /*Cada vez que renderizas un array en react, necesitas indicarle que cada elemento que crea es único
+        y esto se hace a traves del key*/
+
+         return (
+             <div className ="card">
+                <h2 className="name">Mozza</h2>
+                <img src="http://www.rodentia.es/blog/wp-content/uploads/2016/02/Qu%C3%A9-Comen-los-Gatos.jpg" alt="gato mozza"/>
+               <h5 style={{fontSize:'2em', margin:'2px'}}>Hobbies:</h5>
+               <ul>
+                {hobbies.map(function(hobbiItem ,i){
+                  return <li key={i} style={liStyle}>{hobbiItem}</li>
+                })}
+               </ul>
+            </div>
+         );
+        }
+      }
+   //Ahora utilizamos el DOM para crear el elemento Pet(componente) estará dentro de app 
+  ReactDOM.render(<Pet/>, document.getElementById('app'));
+    </script>
+</body>
+</html>
